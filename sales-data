@@ -437,7 +437,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 48,
+   "execution_count": 26,
    "id": "dac3d1dc",
    "metadata": {},
    "outputs": [
@@ -445,27 +445,27 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Top Three Payment Methods:\n",
-      "Cash           44447\n",
-      "Credit Card    34931\n",
-      "Debit Card     20079\n"
+      "Top Three Categories:\n",
+      "Clothing           34487\n",
+      "Cosmetics          15097\n",
+      "Food & Beverage    14776\n"
      ]
     }
    ],
    "source": [
     "# Medium 1. What are the three most popular categories, by total sales?\n",
     "\n",
-    "num_popular_pm = df1[\"payment_method\"].value_counts()\n",
-    "popular_pm = num_popular_pm.idxmax()\n",
-    "top_three_pm = num_popular_pm.head(3)\n",
-    "\n",
-    "print(\"Top Three Payment Methods:\")\n",
-    "print(top_three_pm.to_string())"
+    "num_popular_categ = df1[\"category\"].value_counts() \n",
+    "popular_categ = num_popular_categ.idxmax() \n",
+    "top_three_categ = num_popular_categ.head(3)\n",
+    "         \n",
+    "print(\"Top Three Categories:\")\n",
+    "print(top_three_categ.to_string())"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 50,
+   "execution_count": 27,
    "id": "bd668e74",
    "metadata": {},
    "outputs": [
@@ -487,7 +487,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 83,
+   "execution_count": 31,
    "id": "aaa739bf",
    "metadata": {},
    "outputs": [
@@ -500,11 +500,22 @@
      },
      "metadata": {},
      "output_type": "display_data"
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Based on the displayed graph, it can be observed that both 2021 and 2022 share a comparable pattern of fluctuations.\n",
+      "Sales show a recurring pattern of being at their lowest around between November 2021 and April 2022. It is followed by the months between January 2021 and June 2021.\n",
+      "On the other hand, sales reached their peak between June 2021 and November 2021.\n",
+      "However, in 2023, there was a significant and sudden decrease in sales.\n"
+     ]
     }
    ],
    "source": [
     "# Medium 3. How is the data distributed across different invoice dates? Are there any seasonal trends or patterns? (Use a graph for this.)\n",
     "\n",
+    "import pandas as pd\n",
     "import matplotlib.pyplot as plt\n",
     "\n",
     "merged[\"invoice_date\"] = pd.to_datetime(merged[\"invoice_date\"], format = \"%d/%m/%Y\")\n",
@@ -517,7 +528,12 @@
     "plt.xlabel('Month')\n",
     "plt.ylabel('Total Sales')\n",
     "plt.grid(True)\n",
-    "plt.show()"
+    "plt.show()\n",
+    "\n",
+    "print(\"Based on the displayed graph, it can be observed that both 2021 and 2022 share a comparable pattern of fluctuations.\")\n",
+    "print(\"Sales show a recurring pattern of being at their lowest around between November 2021 and April 2022. It is followed by the months between January 2021 and June 2021.\")\n",
+    "print(\"On the other hand, sales reached their peak between June 2021 and November 2021.\")\n",
+    "print(\"However, in 2023, there was a significant and sudden decrease in sales.\")"
    ]
   },
   {
