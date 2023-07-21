@@ -199,7 +199,7 @@ board7 = [
 tic_tac_toe(board7)
 
 
-# In[117]:
+# In[22]:
 
 
 import math
@@ -235,6 +235,9 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    if first_stop not in [stop for pair in route_map.keys() for stop in pair]:
+        return -1
+    
     current_stop = first_stop
     total_time = 0
 
@@ -250,22 +253,24 @@ def eta(first_stop, second_stop, route_map):
             return total_time
 
         current_stop = next_stop
-        
-# Sample Data
+
+        if current_stop == first_stop:
+            return -1
+
 legs = {
-     ("upd","admu"):{
-         "travel_time_mins":10
-     },
-     ("admu","dlsu"):{
-         "travel_time_mins":35
-     },
-     ("dlsu","upd"):{
-         "travel_time_mins":55
-     }
+    ('a1', 'a2'): {
+        'travel_time_mins': 10
+    },
+    ('a2', 'b1'): {
+        'travel_time_mins': 10230
+    },
+    ('b1', 'a1'): {
+        'travel_time_mins': 1
+    }
 }
 
-# Calling the function to verify if the code is working.
-first_stop = "admu"
-second_stop = "dlsu"
-print(eta(first_stop, second_stop, legs))
+first_stop = "a2"
+second_stop = "b1"
+result = eta(first_stop, second_stop, legs)
+print(result)
 
